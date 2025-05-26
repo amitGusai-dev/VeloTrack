@@ -3,37 +3,37 @@
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 
 module.exports = (phase) => {
-	if (phase === PHASE_DEVELOPMENT_SERVER) {
-		return {
-			reactStrictMode: true,
-			env: {
-				API_KEY: process.env.API_KEY,
-				AUTH_DOMAIN: process.env.AUTH_DOMAIN,
-				PROJECT_ID: process.env.PROJECT_ID,
-				STORAGE_BUCKET: process.env.STORAGE_BUCKET,
-				MESSAGING_SENDER_ID: process.env.MESSAGING_SENDER_ID,
-				APP_ID: process.env.APP_ID,
-				MAP_BOX_ACCESS_TOKEN: process.env.MAP_BOX_ACCESS_TOKEN,
-			},
-			images: {
-				domains: ["links.papareact.com"],
-			},
-		};
-	}
+    if (phase === PHASE_DEVELOPMENT_SERVER) {
+        return {
+            reactStrictMode: true,
+            env: {
+                API_KEY: "AIzaSyArZxY4aH-NidBaXWvCJ3j5hT9t8VzxYPw",
+                AUTH_DOMAIN: "autotrack-e5adc.firebaseapp.com",
+                PROJECT_ID: "autotrack-e5adc",
+                STORAGE_BUCKET: "autotrack-e5adc.firebasestorage.app",
+                MESSAGING_SENDER_ID: "814026979313",
+                APP_ID: "1:814026979313:web:01a58bbaa807b08dcab650",
+                MAP_BOX_ACCESS_TOKEN: "pk.eyJ1IjoiYW1pdGRvdGRldiIsImEiOiJjbWI0d3JkeHIxdDVvMmtzYTU2Z2VzYzlqIn0.0gBJjLyZ0cNhicRfykL2zA",
+            },
+            images: {
+                domains: ["links.papareact.com"],
+            },
+        };
+    }
 
-	return {
-		reactStrictMode: true,
-		env: {
-			API_KEY: process.env.API_KEY,
-			AUTH_DOMAIN: process.env.AUTH_DOMAIN,
-			PROJECT_ID: process.env.PROJECT_ID,
-			STORAGE_BUCKET: process.env.STORAGE_BUCKET,
-			MESSAGING_SENDER_ID: process.env.MESSAGING_SENDER_ID,
-			APP_ID: process.env.APP_ID,
-			MAP_BOX_ACCESS_TOKEN: process.env.MAP_BOX_ACCESS_TOKEN,
-		},
-		images: {
-			domains: ["links.papareact.com"],
-		},
-	};
+    return {
+        reactStrictMode: true,
+        env: {
+            API_KEY: "AIzaSyArZxY4aH-NidBaXWvCJ3j5hT9t8VzxYPw",
+            AUTH_DOMAIN: "autotrack-e5adc.firebaseapp.com",
+            PROJECT_ID: "autotrack-e5adc",
+            STORAGE_BUCKET: "autotrack-e5adc.firebasestorage.app",
+            MESSAGING_SENDER_ID: "814026979313",
+            APP_ID: "1:814026979313:web:01a58bbaa807b08dcab650",
+            MAP_BOX_ACCESS_TOKEN: "pk.eyJ1IjoiYW1pdGRvdGRldiIsImEiOiJjbWI0d3JkeHIxdDVvMmtzYTU2Z2VzYzlqIn0.0gBJjLyZ0cNhicRfykL2zA",
+        },
+        images: {
+            domains: ["links.papareact.com"],
+        },
+    };
 };
