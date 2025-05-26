@@ -14,23 +14,28 @@ const CarList: React.FunctionComponent = () => {
 
 				<CraList>
 					{carList &&
-						carList.map((car, index) => {
-							return (
-								<Car key={index}>
-									<CarImage src={car.imgUrl} alt='Car Image' />
-									<CarDatils>
-										<Services>{car.service}</Services>
-										<Time>
-											{getRandomIntNumberBetween(1, 20)} min away
-										</Time>
-									</CarDatils>
-									<Price>
-										{" "}
-										$ {getRandomIntNumberBetween(20, 30)}.00
-									</Price>
-								</Car>
-							);
-						})}
+						carList
+							.filter(
+								(car) => car.service !== "UberX" && car.service !== "UberXL"
+							)
+							.map((car, index) => {
+								let displayService = car.service;
+								if (car.service === "Black") displayService = "Black Sedan";
+								if (car.service === "Comfort") displayService = "Comfort Nexon";
+								if (car.service === "Black SUV") displayService = "Range SUV";
+								return (
+									<Car key={index}>
+										<CarImage src={car.imgUrl} alt='Car Image' />
+										<CarDatils>
+											<Services>{displayService}</Services>
+										</CarDatils>
+										<Price>
+											{" "}
+											₹ {getRandomIntNumberBetween(200, 500)}.00
+										</Price>
+									</Car>
+								);
+							})}
 				</CraList>
 			</Container>
 		</Wrapper>

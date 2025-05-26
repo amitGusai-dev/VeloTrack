@@ -10,9 +10,10 @@ const LogInScreen: NextPage = () => {
 	return (
 		<Fragment>
 			<Head>
-				<title>Uber Login</title>
+				<title>VeloTrack</title>
+				<link rel='icon' href='/tracking.jpg' />
 			</Head>
-			<meta name='description' content='LogIn to  Uber' />
+			<meta name='description' content='Log-in' />
 
 			<LogInComponent />
 		</Fragment>

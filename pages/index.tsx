@@ -7,19 +7,21 @@ import React, { Fragment } from "react";
 import HomePageComponent from "../components/home-page/home-page";
 
 const HomePage: NextPage = () => {
-	return (
-		<Fragment>
-			<Head>
-				<title>Uber Clone app</title>
-				<meta
-					name='description'
-					content='Uber Clone build with React + Next Js + TypeScript.'
-				/>
-			</Head>
+    return (
+        <Fragment>
+            <Head>
+                <title>VeloTrack</title>
+                <meta
+                    name='description'
+                    content='Tracking app build with React + Next Js + TypeScript.'
+                />
+                {/* Correct favicon path: should be relative to the public folder */}
+                <link rel='icon' href='/tracking.jpg' />
+            </Head>
 
-			<HomePageComponent />
-		</Fragment>
-	);
+            <HomePageComponent />
+        </Fragment>
+    );
 };
 
 export default HomePage;

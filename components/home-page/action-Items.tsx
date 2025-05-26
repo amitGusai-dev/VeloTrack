@@ -13,7 +13,7 @@ const ActionItems: React.FunctionComponent = () => {
 		<Wrapper>
 			<Container>
 				<Header>
-					<UberLogo src='/images/upberlog2.jpg' alt='Uber Logo' />
+					<UberLogo src='/images/vello-white.webp' alt='App Logo' />
 					<ProfileContainer>
 						<Name>{user?.displayName}</Name>
 						<UserImage
@@ -29,7 +29,7 @@ const ActionItems: React.FunctionComponent = () => {
 					<Link href='/search'>
 						<ActionButton>
 							<ActionImage
-								alt='Uber car '
+								alt='Vello car '
 								src='https://i.ibb.co/cyvcpfF/uberx.png'
 							/>
 							Ride
@@ -38,14 +38,14 @@ const ActionItems: React.FunctionComponent = () => {
 
 					<ActionButton>
 						<ActionImage
-							alt='Uber bike '
+							alt='Vello bike '
 							src='https://i.ibb.co/n776JLm/bike.png'
 						/>
 						Wheels
 					</ActionButton>
 					<ActionButton>
 						<ActionImage
-							alt='Uber car '
+							alt='Vello car '
 							src='https://i.ibb.co/5RjchBg/uberschdule.png'
 						/>
 						Reserve
@@ -70,7 +70,7 @@ const Container = tw.div`
 const Header = tw.div` flex items-center justify-between`;
 
 const UberLogo = tw.img`
-h-28
+h-36
 `;
 
 const ProfileContainer = tw.div`

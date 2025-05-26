@@ -23,10 +23,10 @@ const Footer: React.FunctionComponent = () => {
 						<p className='footer-link'>Ride</p>
 						<p> Drive</p>
 						<p className='footer-link'> Deliver</p>
-						<p className='footer-link'> Eat Uber </p>
+						<p className='footer-link'> Eat </p>
 						<p className='footer-link'>Blog</p>
-						<p className='footer-link'> for Business </p>
-						<p className='footer-link'>Uber Freight</p>
+						<p className='footer-link'>Business </p>
+						<p className='footer-link'>Flight</p>
 					</div>
 					<div className='text-white flex flex-col space-y-4  mb-[4rem]'>
 						<p className='text-2xl font-bold'>Global citizenship </p>
@@ -42,7 +42,7 @@ const Footer: React.FunctionComponent = () => {
 				</div>
 
 				<p className='text-gray-200 text-[13px] flex flex-col space-y-5'>
-					© 2021 Uber Technologies Inc.
+					© 2025 VeloTrack Technologies Inc.
 				</p>
 			</div>
 		</footer>

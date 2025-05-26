@@ -30,8 +30,8 @@ const Loading = () => {
 					}}>
 					<Image
 						className='logo-img'
-						src='/images/upberlog2.jpg'
-						alt='Picture of the Uber'
+						src='/images/vello.png'
+						alt='Picture of the App'
 						layout='fill'
 						objectFit='contain'
 					/>

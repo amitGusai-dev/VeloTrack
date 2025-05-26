@@ -1,54 +1,85 @@
 /** @format */
 
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
+import Map from "../ui/map/map"; // Make sure your Map component can accept coordinates as props
 
-const ConfirmActionItems: React.FunctionComponent = () => {
-	const [pickUpCoordinate, setPickUpCoordinate] = useState<any>();
-	const [dropOffCoordinate, setPropOffCoordinate] = useState<any>();
+const ConfirmActionItems: React.FunctionComponent<{
+	pickUpLocation: string;
+	dropOffLocation: string;
+}> = ({ pickUpLocation, dropOffLocation }) => {
+	const [pickUpCoordinate, setPickUpCoordinate] = useState<[number, number] | null>(null);
+	const [dropOffCoordinate, setDropOffCoordinate] = useState<[number, number] | null>(null);
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState<string | null>(null);
 
-	console.log(pickUpCoordinate, dropOffCoordinate);
+	const MAPBOX_TOKEN = "pk.eyJ1IjoiYW1pdGRvdGRldiIsImEiOiJjbWI0eWJjMTMxcmZoMmpzYTB2N3NjODM2In0.vyzUNJdqBAz-3v2qiWcg1w";
 
-	const getDropOffUpCoordinate = () => {
-		const dropUPLocation = "london";
-
-		fetch(
-			`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropUPLocation}.json?access_token=${process.env.MAP_BOX_ACCESS_TOKEN}`,
-		)
-			.then((response) => response.json())
-			.then((data) => {
-				setPropOffCoordinate(data.features[0].center);
-			})
-			.catch((error) => {
-				// console.error("Error:", error);
-			});
-	};
-
-	const getPickUpCoordinate = () => {
-		const pickUpLocation = "paris";
-
-		fetch(
-			`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickUpLocation}.json?access_token=${process.env.MAP_BOX_ACCESS_TOKEN}`,
-		)
-			.then((response) => response.json())
-			.then((data) => {
-				setPickUpCoordinate(data.features[0].center);
-				// console.log("Success:", data);
-			})
-			.catch((error) => {
-				// console.error("Error:", error);
-			});
+	const getCoordinate = async (location: string) => {
+		const res = await fetch(
+			`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location)}.json?access_token=${MAPBOX_TOKEN}`,
+		);
+		const data = await res.json();
+		if (data.features && data.features[0]) {
+			return data.features[0].center as [number, number];
+		}
+		return null;
 	};
 
 	useEffect(() => {
-		getPickUpCoordinate();
-		getDropOffUpCoordinate();
-	}, []);
+		const fetchCoordinates = async () => {
+			setLoading(true);
+			setError(null);
+			try {
+				const [pickup, dropoff] = await Promise.all([
+					pickUpLocation ? getCoordinate(pickUpLocation) : null,
+					dropOffLocation ? getCoordinate(dropOffLocation) : null,
+				]);
+				setPickUpCoordinate(pickup);
+				setDropOffCoordinate(dropoff);
+			} catch (err) {
+				setError("Failed to fetch coordinates. Please check your locations.");
+			}
+			setLoading(false);
+		};
+		fetchCoordinates();
+	}, [pickUpLocation, dropOffLocation]);
+
+	console.log("Pickup:", pickUpCoordinate, "Dropoff:", dropOffCoordinate);
 
 	return (
 		<Wrapper>
-			<Container></Container>
+			<Container>
+				<SectionTitle>Confirm Locations</SectionTitle>
+				<InputSummary>
+					<div>
+						<span className="font-semibold text-gray-700">Pickup:</span>{" "}
+						{pickUpLocation}{" "}
+						{pickUpCoordinate && (
+							<span className="text-xs text-gray-500">
+								[{pickUpCoordinate[1].toFixed(5)}, {pickUpCoordinate[0].toFixed(5)}]
+							</span>
+						)}
+					</div>
+					<div>
+						<span className="font-semibold text-gray-700">Dropoff:</span>{" "}
+						{dropOffLocation}{" "}
+						{dropOffCoordinate && (
+							<span className="text-xs text-gray-500">
+								[{dropOffCoordinate[1].toFixed(5)}, {dropOffCoordinate[0].toFixed(5)}]
+							</span>
+						)}
+					</div>
+				</InputSummary>
+				{loading && <div className="text-blue-500">Loading map...</div>}
+				{error && <div className="text-red-500">{error}</div>}
+				{pickUpCoordinate && dropOffCoordinate && (
+					<Map
+						pickUpCoordinate={pickUpCoordinate}
+						dropOffCoordinate={dropOffCoordinate}
+					/>
+				)}
+			</Container>
 		</Wrapper>
 	);
 };
@@ -56,33 +87,17 @@ const ConfirmActionItems: React.FunctionComponent = () => {
 export default ConfirmActionItems;
 
 const Wrapper = tw.div`
-w-full   flex-1 p-5 `;
-
-const Container = tw.div`
- max-w-[1300px] mx-auto  pb-8`;
-
-const Header = tw.div` flex items-center justify-between`;
-
-const UberLogo = tw.img`
-h-28
+w-full flex-1 p-5
 `;
 
-const ProfileContainer = tw.div`
-flex items-center space-x-4 `;
+const Container = tw.div`
+max-w-[900px] mx-auto pb-8 bg-white bg-opacity-90 rounded-2xl shadow-lg p-6
+`;
 
-const Name = tw.div``;
+const SectionTitle = tw.h2`
+text-xl font-bold text-[#3730a3] mb-4
+`;
 
-const UserImage = tw.img`
-h-12 w-12 rounded-full border border-gray-200 p-px cursor-pointer`;
-
-const ActionsButtons = tw.div`
-flex flex-col space-y-5 md:space-y-0 md:flex-row  md:items-center md:space-x-5 `;
-
-const ActionButton = tw.button`
-bg-gray-200 flex-1 cursor-pointer h-40 items-center flex flex-col justify-center rounded-lg transition duration-75 transform cursor-pointer hover:shadow-2xl hover:scale-105 shadow-sm  md:text-xl p-4 max-w-[440px] `;
-
-const ActionImage = tw.img`
-h-24 `;
-
-const InputButton = tw.div`
-h-20 bg-gray-200 text-2xl p-4  items-center mt-8 rounded-lg shadow-sm  max-w-[410px]`;
+const InputSummary = tw.div`
+mb-6 space-y-2
+`;
