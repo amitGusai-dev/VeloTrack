@@ -1,8 +1,8 @@
 <!-- @format -->
 
-# Uber Clone
+# Velo Track
 
-Building Uber Clone App with React Js, Next Js, TypeScript
+Building Velo Track App with React Js, Next Js, TypeScript
 
 # Table of contents
 
@@ -22,7 +22,7 @@ Building Uber Clone App with React Js, Next Js, TypeScript
 
 # Author
 
-### <a href="https://github.com/saddamarbaa">@Saddam Arbaa</a>
+### <a href="https://github.com/saddamarbaa">@Amit Gusai</a>
 
 # Technologies
 
@@ -41,7 +41,7 @@ Building Uber Clone App with React Js, Next Js, TypeScript
 
 # Demo
 
-## <a href="https://uber-clone-app-nex-js.vercel.app/">LIVE DEMO</a>
+## <a href="https://Velo-Track-app-nex-js.vercel.app/">LIVE DEMO</a>
 
 # Features
 
@@ -54,54 +54,11 @@ Contributions are always welcome!
 
 # Support
 
-For support, email saddamarbaas@gmail.com.
+For support, email amitgusai@gmail.com.
 
 # Feedback
 
-If you have any feedback, please reach out to me at saddamarbaas@gmail.com
-
-Twitter
-https://twitter.com/ArbaaSaddam/
-
-Linkedin.
-https://www.linkedin.com/in/saddamarbaa/
-
-Github
-https://github.com/saddamarbaa
-
-Instagram
-https://www.instagram.com/saddam.dev/
-
-Facebook
-https://www.facebook.com/saddam.arbaa
-
-# Run_Locally
-
-Clone the project
-
-```bash
- https://github.com/saddamarbaa/uber-clone-app-nex-js
-```
-
-Go to the project directory
-
-```bash
-  cd uber-clone-app-nex-js
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-npm run dev
-# or
-yarn dev
-```
+If you have any feedback, please reach out to me at amitgusai@gmail.com
 
 # Environment
 
@@ -120,10 +77,6 @@ yarn dev
 # Status
 
 Project is now in progress
-
-# Inspiration
-
-Build By Saddam Arbaa Project inspired by [Uber] https://www.uber.com/
 
 # Screenshots
 
